@@ -57,5 +57,4 @@ EOF
 5. Change made on dev branch
 
 --- 
-Trigger deployment job if the merge was successful
-- Testing webhook in bootcamp test3
+Test1
