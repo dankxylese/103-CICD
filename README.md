@@ -5,7 +5,7 @@
 #### Automated Deployment on AWS EC2 for 2Tier architecture - Nodejs app and Mongodb  
 - Test 1
 
-- Jenkins Workflow
+- Jenkins Work flow
   
 ![](images/jenkins.png)
 
@@ -43,8 +43,8 @@ EOF
 
 1. Set Branches to Build to develop
 2. Under additional behaviours click add and "Merge before build"
-3. name of repo "origin"
-4. branch to merge "main"
+3. Name of repo "origin"
+4. Branch to merge "main"
 
 ### Post-Build Actions
 
@@ -54,8 +54,8 @@ EOF
 2. Git Publisher
 3. Push Only if Build Succeeds
 4. Merge Results
-5. change made on dev brance
+5. Change made on dev branch
 
 --- 
-Tigger deployment job if the merge was successfull
+Trigger deployment job if the merge was successful
 - Testing webhook in bootcamp test3
