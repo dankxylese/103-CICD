@@ -1,19 +1,19 @@
 # Let's build a Continuous Integration and Continuous Delivery/Deployment (CICD) Pipeline
 ## Jenkins
-### Webhooks with Git-hub
+### Webhooks with Github
 #### Automated Testing using Jenkins
 #### Automated Deployment on AWS EC2 for 2Tier architecture - Nodejs app and Mongodb  
-- Test 1
 
 - Jenkins Work flow
   
 ![](images/jenkins.png)
 
-  ##### Continuous Integration Continuous Delivery/Deployment 
+#### Continuous Integration Continuous Delivery/Deployment 
+
 ![](images/CICD.png)
 
-###### Let's break it down 
-  ![](images/cicd_jenkins.png)
+#### Let's break it down 
+![](images/cicd_jenkins.png)
 
 ### For deployment job in Jenkins
 - In the execute shell of CD job
@@ -31,30 +31,25 @@ ssh -A -o "StrictHostKeyChecking=no" ubuntu@ec2-ip << EOF
 nohup node app.js > /dev/null 2>&1 & - use this command to run node app in the background
 
 # To debug ssh into your ec2 and run the above commands
-    
-
-EOF
 ```
-## Jenkins CI Lab - Solution
+## Jenkins CI 
 
-##### Steps
+- Don't forget to generate a `Deploy key` for Jenkins to have access to your git, and add a webhook that points towards your Jenkins url in such a fashion `http://0.0.0.0:8080/github-webhook/`
 
-##### Source Code Management
+#### Build 1 (Continuous Integration)
 
-1. Set Branches to Build to develop
-2. Under additional behaviours click add and "Merge before build"
-3. Name of repo "origin"
-4. Branch to merge "main"
+- This Build #1 (CI) job is to grab the files from our `/dev/` branch on github, build it and see if there are any errors. If there are no errors, and the build is successful, then continue to Build #2 (CI_Deploy)
 
-### Post-Build Actions
+![](images/diagram1a.png)
 
-#### Git Publisher
+#### Build 2 (Continuous Deployment)
 
-1. Add Post Build Action
-2. Git Publisher
-3. Push Only if Build Succeeds
-4. Merge Results
-5. Change made on dev branch
+- This Build #2 (CI_Merge) job is to now that files have been tested with job #1, job #2 can merge changes in the `/dev/` branch to `/main/`. If this is too, successful, then Build 3 is triggered.
 
---- 
-Testing5 auto builds after 16:39
+![](images/diagram1b.png)
+
+#### Build 3 (Continuous Delivery)
+
+- This Build #3 (CI_Merge_Deploy) job is to finally push the files to an EC2 instance on AWS. It will begin by grabbing files from the `/main/` branch and then copying them with the `scp` command.
+
+![](images/diagram1c.png)
