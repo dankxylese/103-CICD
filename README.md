@@ -36,6 +36,8 @@ nohup node app.js > /dev/null 2>&1 & - use this command to run node app in the b
 
 - Don't forget to generate a `Deploy key` for Jenkins to have access to your git, and add a webhook that points towards your Jenkins url in such a fashion `http://0.0.0.0:8080/github-webhook/`
 
+More instructions on ![HERE](https://www.kisphp.com/linux/setup-jenkins-server-on-aws-ec2-with-slave-agents)
+
 #### Build 1 (Continuous Integration)
 
 - This Build #1 (CI) job is to grab the files from our `/dev/` branch on github, build it and see if there are any errors. If there are no errors, and the build is successful, then continue to Build #2 (CI_Deploy)
@@ -54,4 +56,3 @@ nohup node app.js > /dev/null 2>&1 & - use this command to run node app in the b
 
 ![](images/diagram1c.png)
 
-Test1
