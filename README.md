@@ -53,3 +53,4 @@ nohup node app.js > /dev/null 2>&1 & - use this command to run node app in the b
 - This Build #3 (CI_Merge_Deploy) job is to finally push the files to an EC2 instance on AWS. It will begin by grabbing files from the `/main/` branch and then copying them with the `scp` command.
 
 ![](images/diagram1c.png)
+
