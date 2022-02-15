@@ -36,7 +36,9 @@ nohup node app.js > /dev/null 2>&1 & - use this command to run node app in the b
 
 - Don't forget to generate a `Deploy key` for Jenkins to have access to your git, and add a webhook that points towards your Jenkins url in such a fashion `http://0.0.0.0:8080/github-webhook/`
 
-More instructions on ![HERE](https://www.kisphp.com/linux/setup-jenkins-server-on-aws-ec2-with-slave-agents)
+### Then literally follow this -> ![HERE](https://www.kisphp.com/linux/setup-jenkins-server-on-aws-ec2-with-slave-agents)
+
+![](images/diagram1d.png)
 
 #### Build 1 (Continuous Integration)
 
